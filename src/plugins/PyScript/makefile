@@ -2,8 +2,8 @@
 all: complete
 SHELL = /bin/sh
 
-CFLAGS = $(shell python-config --cflags) -fPIC -O0 -g
-LDFLAGS = $(shell python-config --ldflags) -shared -Xlinker -export-dynamic
+CFLAGS = $(shell python2-config --cflags) -fPIC -O0 -g
+LDFLAGS = $(shell python2-config --ldflags) -shared -Xlinker -export-dynamic
 
 ifeq ($(DEBIAN), 1)
   CFLAGS  += -DDEBIAN
