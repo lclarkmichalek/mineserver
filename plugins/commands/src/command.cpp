@@ -120,11 +120,9 @@ bool chatCommandFunction(const char* userIn,const char* cmdIn, int argc, char** 
   // User commands
   CommandList::iterator iter;
   if((iter = m_Commands.find(command)) != m_Commands.end())
-  {
     iter->second->callback(user, command, cmd);
-    return true;
-  }
-  return false;
+  
+  return true;
 }
 
 bool isValidItem(int id)
