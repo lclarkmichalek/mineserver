@@ -1,0 +1,62 @@
+Ircbridge mineserver plugin
+===========================
+
+Installation
+------------
+
+    make && make install
+
+Configuration
+-------------
+
+Ircbridge has a lot of configuration options:
+  
+  * spew - boolean value. If true, all mc chat will be sent to spew channel (Default: false)
+  * spew_commands - boolean value. If true, mc commands will be sent to spew channel (Default: false)
+  * spew_channel - string value. Channel to spew into (Default: admin_channel)
+  * admin_channel - string value. Channel to monitor for irc commands, and to send mc talk commands to [Required]
+  * admin_channel_password - string value. Password for admin_channel
+  
+  * irc_server - string value. Irc server to connect to [Required]
+  * irc_port - iteger value. Port to use for connection (Default: 6667)
+  * irc_username - string value. Username for connection [Required]
+  * irc_nickname - string value. Nickname for connection (Default: irc_username)
+  * irc_realname - string value. Real name for connection
+  * irc_password - string value. Password for connection
+  
+  * irc_admins - vector value. Admins for irc (Default: all)
+  * minecraft_admins - vector value. Admins for minecraft (Default: all)
+  
+  * minecraft_command_prefix - char value. Prefix for minecraft commands (Default: /)
+  * irc_command_prefix - char value. Prefix for irc commands (Default: .)
+  
+  * irc_notice_command - string value. Command to send notice to mc server (Default: minecraft_notice)
+  * irc_talk_command - string value. Command to send message to mc server (Default: minecraft_talk)
+  * irc_command_aliases - map value. Map of aliases for irc commands (Default: "mn:minecraft_notice mt:minecraft_talk")
+  
+  * minecraft_notice_command - string value. Command to send notice to irc admin channel (Default: admin)
+  * minecraft_talk_command - string value. Command to send message to irc admin channel (Default: irc)
+  * minecraft_command_aliases - map value. Map of aliases for minecraft commands
+
+  * chat_auth_level - int value. Level of access required to chat. (Default: 0)
+  * msg_auth_level - int value. Level of access required to send a message. (Default: 0)
+  * cmd_auth_level - int value. Level of access required to execute a command. (Default: 1)
+  * notice_auth_level - int value. Level of access required to send a notice. (Default: 1)
+
+All config options should be in the form "ircbridge.<config_option>". For auth level options, 0 = normal user, and 1 = admin.
+
+Example config
+--------------
+
+In `bin/config.cfg`:
+
+    include "ircbridge.cfg";
+    system.plugins += ("ircbridge":"./ircbridge");
+
+In `bin/ircbridge.cfg`:
+
+    ircbridge.admin_channel = "#testfoo";
+    ircbridge.irc_server = "irc.freenode.net";
+    ircbridge.irc_port = 6667;
+    ircbridge.irc_username = "TestMineBot";
+    ircbridge.spew = false;
